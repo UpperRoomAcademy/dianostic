@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Adventure Test 🌟</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .question {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 3px solid #ff6b6b;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 60px;
+            height: 60px;
+            background: #4ecdc4;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        .question h3 {
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+        }
+        
+        .question-text {
+            font-size: 1.2em;
+            color: #34495e;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .number-display {
+            font-size: 3em;
+            color: #e74c3c;
+            text-align: center;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .answer-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .answer-btn {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%);
+            border: 3px solid #ff6b6b;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 60px;
+        }
+        
+        .answer-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #fecfef 0%, #ff9a9e 100%);
+        }
+        
+        .answer-btn.selected {
+            background: linear-gradient(45deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .input-answer {
+            background: #fff;
+            border: 3px solid #4ecdc4;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1.2em;
+            width: 100px;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 30px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .results {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 3px solid #4ecdc4;
+            display: none;
+        }
+        
+        .score {
+            font-size: 2em;
+            text-align: center;
+            color: #2c3e50;
+            margin: 20px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .feedback {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .feedback.correct {
+            border-left-color: #27ae60;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 10px;
+        }
+        
+        .visual-aid {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 2em;
+        }
+        
+        .shapes {
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .circle { 
+            width: 30px; 
+            height: 30px; 
+            background: #ff6b6b; 
+            border-radius: 50%; 
+            display: inline-block; 
+            margin: 3px;
+        }
+        
+        .square { 
+            width: 30px; 
+            height: 30px; 
+            background: #4ecdc4; 
+            display: inline-block; 
+            margin: 3px;
+        }
+        
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid #feca57;
+            display: inline-block;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Math Adventure Test 🌟</h1>
+            <p>Let's explore numbers together!</p>
+        </div>
+        
+        <div class="content">
+            <!-- Question 1: Counting Objects -->
+            <div class="question" data-question="1" data-correct="4">
+                <h3>Question 1: Count the Stars! ⭐</h3>
+                <div class="visual-aid">⭐ ⭐ ⭐ ⭐</div>
+                <div class="question-text">How many stars do you see?</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(1, '3')">3</button>
+                    <button class="answer-btn" onclick="selectAnswer(1, '4')">4</button>
+                    <button class="answer-btn" onclick="selectAnswer(1, '5')">5</button>
+                </div>
+            </div>
+
+            <!-- Question 2: Number Recognition -->
+            <div class="question" data-question="2" data-correct="7">
+                <h3>Question 2: What Number Is This? 🔢</h3>
+                <div class="number-display">7</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(2, '6')">6</button>
+                    <button class="answer-btn" onclick="selectAnswer(2, '7')">7</button>
+                    <button class="answer-btn" onclick="selectAnswer(2, '8')">8</button>
+                </div>
+            </div>
+
+            <!-- Question 3: Simple Addition -->
+            <div class="question" data-question="3" data-correct="5">
+                <h3>Question 3: Let's Add! ➕</h3>
+                <div class="question-text">2 + 3 = ?</div>
+                <div class="visual-aid">🍎🍎 + 🍎🍎🍎 = ?</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(3, '4')">4</button>
+                    <button class="answer-btn" onclick="selectAnswer(3, '5')">5</button>
+                    <button class="answer-btn" onclick="selectAnswer(3, '6')">6</button>
+                </div>
+            </div>
+
+            <!-- Question 4: Shape Recognition -->
+            <div class="question" data-question="4" data-correct="circle">
+                <h3>Question 4: Find the Circle! 🔵</h3>
+                <div class="visual-aid">
+                    <div class="shapes">
+                        <div class="square"></div>
+                        <div class="circle"></div>
+                        <div class="triangle"></div>
+                    </div>
+                </div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(4, 'square')">Square</button>
+                    <button class="answer-btn" onclick="selectAnswer(4, 'circle')">Circle</button>
+                    <button class="answer-btn" onclick="selectAnswer(4, 'triangle')">Triangle</button>
+                </div>
+            </div>
+
+            <!-- Question 5: Counting to 10 -->
+            <div class="question" data-question="5" data-correct="8">
+                <h3>Question 5: Count the Hearts! 💖</h3>
+                <div class="visual-aid">💖 💖 💖 💖 💖 💖 💖 💖</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(5, '7')">7</button>
+                    <button class="answer-btn" onclick="selectAnswer(5, '8')">8</button>
+                    <button class="answer-btn" onclick="selectAnswer(5, '9')">9</button>
+                </div>
+            </div>
+
+            <!-- Question 6: Simple Subtraction -->
+            <div class="question" data-question="6" data-correct="2">
+                <h3>Question 6: Take Away! ➖</h3>
+                <div class="question-text">5 - 3 = ?</div>
+                <div class="visual-aid">🌟🌟🌟🌟🌟 take away 3 = ?</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(6, '1')">1</button>
+                    <button class="answer-btn" onclick="selectAnswer(6, '2')">2</button>
+                    <button class="answer-btn" onclick="selectAnswer(6, '3')">3</button>
+                </div>
+            </div>
+
+            <!-- Question 7: Number Sequence -->
+            <div class="question" data-question="7" data-correct="4">
+                <h3>Question 7: What Comes Next? 🔢</h3>
+                <div class="question-text">1, 2, 3, ___</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(7, '3')">3</button>
+                    <button class="answer-btn" onclick="selectAnswer(7, '4')">4</button>
+                    <button class="answer-btn" onclick="selectAnswer(7, '5')">5</button>
+                </div>
+            </div>
+
+            <!-- Question 8: Bigger or Smaller -->
+            <div class="question" data-question="8" data-correct="6">
+                <h3>Question 8: Which Number is Bigger? 📏</h3>
+                <div class="question-text">Which is bigger: 4 or 6?</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(8, '4')">4</button>
+                    <button class="answer-btn" onclick="selectAnswer(8, '6')">6</button>
+                    <button class="answer-btn" onclick="selectAnswer(8, 'same')">They're the same</button>
+                </div>
+            </div>
+
+            <!-- Question 9: Pattern Recognition -->
+            <div class="question" data-question="9" data-correct="red">
+                <h3>Question 9: What Color Comes Next? 🎨</h3>
+                <div class="question-text">Red, Blue, Red, Blue, ___</div>
+                <div class="visual-aid">🔴 🔵 🔴 🔵 ___</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(9, 'red')">Red</button>
+                    <button class="answer-btn" onclick="selectAnswer(9, 'blue')">Blue</button>
+                    <button class="answer-btn" onclick="selectAnswer(9, 'green')">Green</button>
+                </div>
+            </div>
+
+            <!-- Question 10: More Counting -->
+            <div class="question" data-question="10" data-correct="6">
+                <h3>Question 10: Count the Flowers! 🌸</h3>
+                <div class="visual-aid">🌸 🌸 🌸 🌸 🌸 🌸</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(10, '5')">5</button>
+                    <button class="answer-btn" onclick="selectAnswer(10, '6')">6</button>
+                    <button class="answer-btn" onclick="selectAnswer(10, '7')">7</button>
+                </div>
+            </div>
+
+            <!-- Question 11: Addition with 0 -->
+            <div class="question" data-question="11" data-correct="3">
+                <h3>Question 11: Adding Zero! ➕</h3>
+                <div class="question-text">3 + 0 = ?</div>
+                <div class="visual-aid">🍓🍓🍓 + nothing = ?</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(11, '0')">0</button>
+                    <button class="answer-btn" onclick="selectAnswer(11, '3')">3</button>
+                    <button class="answer-btn" onclick="selectAnswer(11, '6')">6</button>
+                </div>
+            </div>
+
+            <!-- Question 12: Shape Counting -->
+            <div class="question" data-question="12" data-correct="3">
+                <h3>Question 12: Count the Triangles! 🔺</h3>
+                <div class="visual-aid">
+                    <div class="triangle"></div>
+                    <div class="triangle"></div>
+                    <div class="triangle"></div>
+                    <div class="circle"></div>
+                    <div class="square"></div>
+                </div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(12, '2')">2</button>
+                    <button class="answer-btn" onclick="selectAnswer(12, '3')">3</button>
+                    <button class="answer-btn" onclick="selectAnswer(12, '5')">5</button>
+                </div>
+            </div>
+
+            <!-- Question 13: Number Before -->
+            <div class="question" data-question="13" data-correct="2">
+                <h3>Question 13: What Comes Before? ⬅️</h3>
+                <div class="question-text">___, 3, 4</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(13, '1')">1</button>
+                    <button class="answer-btn" onclick="selectAnswer(13, '2')">2</button>
+                    <button class="answer-btn" onclick="selectAnswer(13, '5')">5</button>
+                </div>
+            </div>
+
+            <!-- Question 14: Simple Word Problem -->
+            <div class="question" data-question="14" data-correct="3">
+                <h3>Question 14: Story Problem! 📚</h3>
+                <div class="question-text">You have 1 cookie. Mom gives you 2 more cookies. How many cookies do you have now?</div>
+                <div class="visual-aid">🍪 + 🍪🍪 = ?</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(14, '2')">2</button>
+                    <button class="answer-btn" onclick="selectAnswer(14, '3')">3</button>
+                    <button class="answer-btn" onclick="selectAnswer(14, '4')">4</button>
+                </div>
+            </div>
+
+            <!-- Question 15: Counting by 2s -->
+            <div class="question" data-question="15" data-correct="6">
+                <h3>Question 15: Count by 2s! 👫</h3>
+                <div class="question-text">2, 4, ___</div>
+                <div class="visual-aid">👫 👫👫 👫👫👫</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(15, '5')">5</button>
+                    <button class="answer-btn" onclick="selectAnswer(15, '6')">6</button>
+                    <button class="answer-btn" onclick="selectAnswer(15, '7')">7</button>
+                </div>
+            </div>
+
+            <!-- Question 16: More or Less -->
+            <div class="question" data-question="16" data-correct="less">
+                <h3>Question 16: More or Less? 📊</h3>
+                <div class="question-text">Is 3 more or less than 5?</div>
+                <div class="visual-aid">🟦🟦🟦 vs 🟦🟦🟦🟦🟦</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(16, 'more')">More</button>
+                    <button class="answer-btn" onclick="selectAnswer(16, 'less')">Less</button>
+                    <button class="answer-btn" onclick="selectAnswer(16, 'same')">Same</button>
+                </div>
+            </div>
+
+            <!-- Question 17: Addition to 10 -->
+            <div class="question" data-question="17" data-correct="7">
+                <h3>Question 17: Big Addition! ➕</h3>
+                <div class="question-text">4 + 3 = ?</div>
+                <div class="visual-aid">🎈🎈🎈🎈 + 🎈🎈🎈 = ?</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(17, '6')">6</button>
+                    <button class="answer-btn" onclick="selectAnswer(17, '7')">7</button>
+                    <button class="answer-btn" onclick="selectAnswer(17, '8')">8</button>
+                </div>
+            </div>
+
+            <!-- Question 18: Counting backwards -->
+            <div class="question" data-question="18" data-correct="2">
+                <h3>Question 18: Count Backwards! ⬇️</h3>
+                <div class="question-text">5, 4, 3, ___</div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(18, '1')">1</button>
+                    <button class="answer-btn" onclick="selectAnswer(18, '2')">2</button>
+                    <button class="answer-btn" onclick="selectAnswer(18, '4')">4</button>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="calculateScore()">🎯 Check Answers & See Score</button>
+                <button class="btn" onclick="resetTest()">🔄 Start Over</button>
+            </div>
+
+            <div class="results" id="results">
+                <div class="score" id="scoreDisplay"></div>
+                <div id="feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let answers = {};
+        
+        const correctAnswers = {
+            1: "4", 2: "7", 3: "5", 4: "circle", 5: "8", 6: "2", 7: "4", 8: "6", 9: "red",
+            10: "6", 11: "3", 12: "3", 13: "2", 14: "3", 15: "6", 16: "less", 17: "7", 18: "2"
+        };
+
+        const explanations = {
+            1: "Count each star: ⭐ ⭐ ⭐ ⭐ = 4 stars",
+            2: "The number shown is 7",
+            3: "2 apples + 3 apples = 5 apples total",
+            4: "A circle is round like a ball",
+            5: "Count each heart: 💖💖💖💖💖💖💖💖 = 8 hearts",
+            6: "Start with 5, take away 3, you have 2 left",
+            7: "The pattern is 1, 2, 3, so 4 comes next",
+            8: "6 is bigger than 4",
+            9: "The pattern is Red, Blue, Red, Blue, so Red comes next",
+            10: "Count each flower: 🌸🌸🌸🌸🌸🌸 = 6 flowers",
+            11: "When you add 0 to any number, it stays the same: 3 + 0 = 3",
+            12: "Count only the triangles (🔺), not the other shapes",
+            13: "Before 3 comes 2: 2, 3, 4",
+            14: "1 cookie + 2 more cookies = 3 cookies total",
+            15: "Counting by 2s: 2, 4, 6",
+            16: "3 is smaller than 5, so it's less",
+            17: "4 balloons + 3 balloons = 7 balloons total",
+            18: "Counting backwards: 5, 4, 3, 2"
+        };
+
+        function selectAnswer(questionNum, answer) {
+            // Remove selection from all buttons in this question
+            const questionDiv = document.querySelector(`[data-question="${questionNum}"]`);
+            const buttons = questionDiv.querySelectorAll('.answer-btn');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            
+            // Add selection to clicked button
+            event.target.classList.add('selected');
+            
+            // Store answer
+            answers[questionNum] = answer;
+        }
+
+        function calculateScore() {
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            let feedbackHTML = '<h3>📝 Test Results:</h3>';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const userAnswer = answers[i];
+                const correctAnswer = correctAnswers[i];
+                const isCorrect = userAnswer === correctAnswer;
+                
+                if (isCorrect) {
+                    score++;
+                    feedbackHTML += `
+                        <div class="feedback correct">
+                            <strong>Question ${i}: ✅ Correct!</strong><br>
+                            Answer: ${correctAnswer}<br>
+                            <em>${explanations[i]}</em>
+                        </div>
+                    `;
+                } else {
+                    feedbackHTML += `
+                        <div class="feedback">
+                            <strong>Question ${i}: ❌ Incorrect</strong><br>
+                            Your answer: ${userAnswer || 'No answer'}<br>
+                            Correct answer: ${correctAnswer}<br>
+                            <em>${explanations[i]}</em>
+                        </div>
+                    `;
+                }
+            }
+
+            const percentage = Math.round((score / totalQuestions) * 100);
+            let emoji = "🌟";
+            let message = "Great job!";
+            
+            if (percentage >= 90) {
+                emoji = "🎉";
+                message = "Outstanding work!";
+            } else if (percentage >= 80) {
+                emoji = "⭐";
+                message = "Excellent!";
+            } else if (percentage >= 70) {
+                emoji = "👍";
+                message = "Good job!";
+            } else if (percentage >= 60) {
+                emoji = "💪";
+                message = "Keep practicing!";
+            } else {
+                emoji = "📚";
+                message = "Let's work on these skills together!";
+            }
+
+            document.getElementById('scoreDisplay').innerHTML = `
+                ${emoji} ${message} ${emoji}<br>
+                Score: ${score} out of ${totalQuestions} (${percentage}%)
+            `;
+            
+            document.getElementById('feedback').innerHTML = feedbackHTML;
+            document.getElementById('results').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetTest() {
+            answers = {};
+            document.querySelectorAll('.answer-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.getElementById('results').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
