@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpperRoom Academy - Empowering Young Minds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 50%, #9c27b0 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #ffd600;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #ff4081;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tutor-section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .tutor-section h2 {
+            color: #ffd600;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .tutor-info {
+            font-size: 1.1em;
+            color: #ffeb3b;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(255, 214, 0, 0.3);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 214, 0, 0.3);
+        }
+
+        .service-card h3 {
+            color: #ffd600;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-card li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05em;
+        }
+
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff4081;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .approach-section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .approach-section h2 {
+            color: #ffd600;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .approach-item {
+            background: rgba(255, 64, 129, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            border: 2px solid #ff4081;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ffd600;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-item a:hover {
+            color: #ffd600;
+        }
+
+        .students-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .students-section h2 {
+            color: #ffd600;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .student-levels {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .level-badge {
+            background: linear-gradient(135deg, #ff4081, #f50057);
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>UpperRoom Academy</h1>
+            <p class="subtitle">Empowering Young Minds Through Personalized Education</p>
+            <div class="intro-text">
+                Welcome to UpperRoom Academy, where learning reaches new heights! We provide comprehensive educational support from elementary through college prep, combining traditional academics with cutting-edge technology skills to prepare students for success in the modern world.
+            </div>
+        </header>
+
+        <div class="tutor-section">
+            <h2>Meet Your Tutor</h2>
+            <p class="tutor-info">
+                <strong>Lidia Yohannes</strong><br>
+                Master's Degree in Computer Science<br>
+                6+ Years of Tutoring Experience
+            </p>
+            <p style="margin-top: 15px;">
+                With a passion for education and technology, Lidia brings expertise, patience, and personalized attention to every student, helping them unlock their full potential.
+            </p>
+        </div>
+
+        <div class="students-section">
+            <h2>Who We Teach</h2>
+            <div class="student-levels">
+                <div class="level-badge">Elementary</div>
+                <div class="level-badge">Middle School</div>
+                <div class="level-badge">High School</div>
+                <div class="level-badge">College Prep</div>
+            </div>
+        </div>
+
+        <div class="approach-section">
+            <h2>Our Approach</h2>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <strong>One-on-One Sessions</strong><br>
+                    Personalized attention tailored to your learning style
+                </div>
+                <div class="approach-item">
+                    <strong>Group Sessions</strong><br>
+                    Collaborative learning with peers
+                </div>
+                <div class="approach-item">
+                    <strong>Homework Help</strong><br>
+                    Assignments and test preparation support
+                </div>
+                <div class="approach-item">
+                    <strong>Hands-On Learning</strong><br>
+                    Activities and project-based education
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: #ffd600; font-size: 2.5em; margin: 40px 0;">What We Offer</h2>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Academics</h3>
+                <ul>
+                    <li>Mathematics</li>
+                    <li>English</li>
+                    <li>Science</li>
+                    <li>Biology</li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic;">
+                    Comprehensive support across core subjects with homework help, assignments, and test prep.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Coding & Technology</h3>
+                <ul>
+                    <li>Website Creation</li>
+                    <li>Program Applications</li>
+                    <li>AI Integration</li>
+                    <li>AI Prompting</li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic;">
+                    Learn valuable tech skills for the future, from coding basics to advanced AI concepts.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Test Preparation</h3>
+                <ul>
+                    <li>SAT Preparation</li>
+                    <li>ACT Preparation</li>
+                    <li>College Application Support</li>
+                    <li>Essay Coaching</li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic;">
+                    Excel on standardized tests and craft compelling college applications.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Reading Clubs</h3>
+                <ul>
+                    <li>Public Speaking Skills</li>
+                    <li>Reading Discussions</li>
+                    <li>Critical Thinking</li>
+                    <li>Communication Development</li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic;">
+                    Build confidence and communication skills through engaging literature discussions.
+                </p>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Contact Us!</h2>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">
+                Ready to elevate your education? Get in touch with us today!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    📞 <a href="tel:+14753082771">+1 (475) 308-2771</a>
+                </div>
+                <div class="contact-item">
+                    ✉️ <a href="mailto:upperroom382@gmail.com">upperroom382@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

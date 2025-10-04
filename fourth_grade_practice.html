@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miss Tekle's 4th Grade Practice Questions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+        }
+        
+        .question-container {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            border: 3px solid #ff9a76;
+        }
+        
+        .question-container h3 {
+            color: #d63031;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            padding: 15px;
+            background: white;
+            border: 2px solid #74b9ff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:hover {
+            transform: translateX(10px);
+            background: #dfe6e9;
+            border-color: #0984e3;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            transform: scale(1.3);
+        }
+        
+        .option.correct {
+            background: #d4edda !important;
+            border-color: #28a745 !important;
+            font-weight: bold;
+        }
+        
+        .option.wrong {
+            background: #fff3cd !important;
+            border-color: #ffc107 !important;
+        }
+        
+        .option.correct::after {
+            content: " ✓ Correct!";
+            color: #28a745;
+            font-weight: bold;
+            margin-left: auto;
+            font-size: 1.1em;
+        }
+        
+        .option.wrong::after {
+            content: " ✗ Your Answer";
+            color: #ff8800;
+            font-weight: bold;
+            margin-left: auto;
+            font-size: 1.1em;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 15px;
+            font-size: 1.3em;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .excellent {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #2d3436;
+        }
+        
+        .good {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            color: white;
+        }
+        
+        .keep-practicing {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #2d3436;
+        }
+        
+        .emoji {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Miss Tekle's 4th Grade 📚</h1>
+            <p>Practice Questions</p>
+        </div>
+        
+        <form id="quizForm">
+            <div class="question-container">
+                <h3>1. What is 8 × 7?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="a"> 54</label>
+                    <label class="option"><input type="radio" name="q1" value="b"> 56</label>
+                    <label class="option"><input type="radio" name="q1" value="c"> 63</label>
+                    <label class="option"><input type="radio" name="q1" value="d"> 48</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>2. Which word is a noun?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="a"> Quickly</label>
+                    <label class="option"><input type="radio" name="q2" value="b"> Jump</label>
+                    <label class="option"><input type="radio" name="q2" value="c"> Beautiful</label>
+                    <label class="option"><input type="radio" name="q2" value="d"> Teacher</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>3. What is 456 + 278?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="a"> 724</label>
+                    <label class="option"><input type="radio" name="q3" value="b"> 734</label>
+                    <label class="option"><input type="radio" name="q3" value="c"> 644</label>
+                    <label class="option"><input type="radio" name="q3" value="d"> 834</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>4. What is the main idea of a story called?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="a"> The setting</label>
+                    <label class="option"><input type="radio" name="q4" value="b"> The theme</label>
+                    <label class="option"><input type="radio" name="q4" value="c"> The character</label>
+                    <label class="option"><input type="radio" name="q4" value="d"> The title</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>5. Which fraction is equivalent to 1/2?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="a"> 2/3</label>
+                    <label class="option"><input type="radio" name="q5" value="b"> 3/6</label>
+                    <label class="option"><input type="radio" name="q5" value="c"> 1/4</label>
+                    <label class="option"><input type="radio" name="q5" value="d"> 2/5</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>6. Which sentence has correct punctuation?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q6" value="a"> What time is it</label>
+                    <label class="option"><input type="radio" name="q6" value="b"> What time is it.</label>
+                    <label class="option"><input type="radio" name="q6" value="c"> What time is it?</label>
+                    <label class="option"><input type="radio" name="q6" value="d"> what time is it?</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>7. What is 72 ÷ 8?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q7" value="a"> 7</label>
+                    <label class="option"><input type="radio" name="q7" value="b"> 8</label>
+                    <label class="option"><input type="radio" name="q7" value="c"> 9</label>
+                    <label class="option"><input type="radio" name="q7" value="d"> 10</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>8. Which word is a verb?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q8" value="a"> Happy</label>
+                    <label class="option"><input type="radio" name="q8" value="b"> Book</label>
+                    <label class="option"><input type="radio" name="q8" value="c"> Running</label>
+                    <label class="option"><input type="radio" name="q8" value="d"> Colorful</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>9. A rectangle has a length of 6 cm and width of 4 cm. What is its area?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q9" value="a"> 10 cm²</label>
+                    <label class="option"><input type="radio" name="q9" value="b"> 20 cm²</label>
+                    <label class="option"><input type="radio" name="q9" value="c"> 24 cm²</label>
+                    <label class="option"><input type="radio" name="q9" value="d"> 26 cm²</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>10. Which word means the opposite of "happy"?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q10" value="a"> Joyful</label>
+                    <label class="option"><input type="radio" name="q10" value="b"> Sad</label>
+                    <label class="option"><input type="radio" name="q10" value="c"> Excited</label>
+                    <label class="option"><input type="radio" name="q10" value="d"> Cheerful</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>11. What is 3/4 + 1/4?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q11" value="a"> 4/8</label>
+                    <label class="option"><input type="radio" name="q11" value="b"> 1</label>
+                    <label class="option"><input type="radio" name="q11" value="c"> 4/4</label>
+                    <label class="option"><input type="radio" name="q11" value="d"> Both B and C</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>12. Which sentence uses a comma correctly?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q12" value="a"> I like apples bananas and oranges.</label>
+                    <label class="option"><input type="radio" name="q12" value="b"> I like apples, bananas, and oranges.</label>
+                    <label class="option"><input type="radio" name="q12" value="c"> I like, apples bananas and oranges.</label>
+                    <label class="option"><input type="radio" name="q12" value="d"> I like apples bananas, and oranges.</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>13. What is 1,000 - 467?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q13" value="a"> 533</label>
+                    <label class="option"><input type="radio" name="q13" value="b"> 543</label>
+                    <label class="option"><input type="radio" name="q13" value="c"> 633</label>
+                    <label class="option"><input type="radio" name="q13" value="d"> 443</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>14. Which is a complete sentence?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q14" value="a"> Running in the park.</label>
+                    <label class="option"><input type="radio" name="q14" value="b"> The big brown dog.</label>
+                    <label class="option"><input type="radio" name="q14" value="c"> She loves to read books.</label>
+                    <label class="option"><input type="radio" name="q14" value="d"> After school today.</label>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3>15. Which number is greater than 5,432?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q15" value="a"> 5,234</label>
+                    <label class="option"><input type="radio" name="q15" value="b"> 5,423</label>
+                    <label class="option"><input type="radio" name="q15" value="c"> 5,342</label>
+                    <label class="option"><input type="radio" name="q15" value="d"> 5,555</label>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Check My Answers! 🎯</button>
+        </form>
+        
+        <div id="result" class="result"></div>
+    </div>
+    
+    <script>
+        const answers = {
+            q1: 'b', q2: 'd', q3: 'b', q4: 'b', q5: 'b',
+            q6: 'c', q7: 'c', q8: 'c', q9: 'c', q10: 'b',
+            q11: 'd', q12: 'b', q13: 'a', q14: 'c', q15: 'd'
+        };
+        
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let score = 0;
+            let total = 15;
+            
+            // Disable submit button
+            e.target.querySelector('button').disabled = true;
+            
+            // Check each question and mark correct/incorrect
+            for (let i = 1; i <= total; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const allOptions = document.querySelectorAll(`input[name="q${i}"]`);
+                
+                // Mark all options
+                allOptions.forEach(option => {
+                    const label = option.parentElement;
+                    
+                    // Always mark the correct answer in green
+                    if (option.value === correctAnswer) {
+                        label.classList.add('correct');
+                    }
+                    
+                    // Mark the selected wrong answer in orange
+                    if (selectedAnswer && option === selectedAnswer && option.value !== correctAnswer) {
+                        label.classList.add('wrong');
+                    }
+                    
+                    // Disable all radio buttons after submission
+                    option.disabled = true;
+                });
+                
+                // Count score
+                if (selectedAnswer && selectedAnswer.value === correctAnswer) {
+                    score++;
+                }
+            }
+            
+            const percentage = (score / total) * 100;
+            const resultDiv = document.getElementById('result');
+            
+            let resultClass = '';
+            let message = '';
+            let emoji = '';
+            
+            if (percentage >= 90) {
+                resultClass = 'excellent';
+                message = 'Excellent Work!';
+                emoji = '🌟⭐✨';
+            } else if (percentage >= 70) {
+                resultClass = 'good';
+                message = 'Great Job!';
+                emoji = '😊👍🎉';
+            } else {
+                resultClass = 'keep-practicing';
+                message = 'Keep Practicing!';
+                emoji = '💪📚🌈';
+            }
+            
+            resultDiv.className = `result show ${resultClass}`;
+            resultDiv.innerHTML = `
+                <h2>${message}</h2>
+                <div class="emoji">${emoji}</div>
+                <p>You got <strong>${score}</strong> out of <strong>${total}</strong> questions correct!</p>
+                <p>That's <strong>${percentage.toFixed(0)}%</strong>!</p>
+            `;
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

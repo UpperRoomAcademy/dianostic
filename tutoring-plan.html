@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoring Program - Tekle Sisters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .student-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .student-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .student-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        
+        .student-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            background: #667eea;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .icon {
+            font-size: 1.3em;
+        }
+        
+        .content-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .content-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .content-box ul {
+            list-style-position: inside;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-box p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .frequency {
+            background: #e8eaf6;
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Tutoring Program - Tekle Sisters</h1>
+        
+        <div class="students-grid">
+            <!-- 5th Grader -->
+            <div class="student-card">
+                <div class="student-header">
+                    <h2>5th Grade - Miss Tekle</h2>
+                    <p>Advanced Elementary Program</p>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">📖</span>
+                        <span>Reading & Language Arts</span>
+                    </div>
+                    <div class="content-box">
+                        <h4>Focus Areas:</h4>
+                        <ul>
+                            <li>Reading comprehension strategies</li>
+                            <li>Vocabulary building and context clues</li>
+                            <li>Writing essays and narratives</li>
+                            <li>Grammar, punctuation, and sentence structure</li>
+                            <li>Literary analysis and critical thinking</li>
+                        </ul>
+                        <span class="frequency">Weekly lessons + homework review</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">🔢</span>
+                        <span>Mathematics</span>
+                    </div>
+                    <div class="content-box">
+                        <h4>Focus Areas:</h4>
+                        <ul>
+                            <li>Multi-digit multiplication and division</li>
+                            <li>Fractions, decimals, and percentages</li>
+                            <li>Basic algebra and expressions</li>
+                            <li>Geometry: area, perimeter, volume</li>
+                            <li>Word problems and real-world applications</li>
+                        </ul>
+                        <span class="frequency">Weekly lessons + homework review</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">📝</span>
+                        <span>Homework Help</span>
+                    </div>
+                    <div class="content-box">
+                        <p>Review and complete all assigned homework from school. Focus on understanding concepts, not just completing assignments. Address any confusion or questions.</p>
+                        <span class="frequency">Every session</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">✅</span>
+                        <span>Assessments</span>
+                    </div>
+                    <div class="content-box">
+                        <h4>Assessment Plan:</h4>
+                        <ul>
+                            <li>Weekly mini-quizzes (Math & Reading)</li>
+                            <li>Monthly comprehensive review tests</li>
+                            <li>Writing assignments with feedback</li>
+                            <li>Practice state standardized tests</li>
+                        </ul>
+                        <span class="frequency">Ongoing progress tracking</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">🎯</span>
+                        <span>Study Skills & Organization</span>
+                    </div>
+                    <div class="content-box">
+                        <ul>
+                            <li>Time management and planning</li>
+                            <li>Note-taking strategies</li>
+                            <li>Test preparation techniques</li>
+                            <li>Building independence and confidence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4th Grader -->
+            <div class="student-card">
+                <div class="student-header">
+                    <h2>4th Grade - Miss Tekle</h2>
+                    <p>Intermediate Elementary Program</p>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">📖</span>
+                        <span>Reading & Language Arts</span>
+                    </div>
+                    <div class="content-box">
+                        <h4>Focus Areas:</h4>
+                        <ul>
+                            <li>Reading fluency and comprehension</li>
+                            <li>Vocabulary development</li>
+                            <li>Paragraph writing and story structure</li>
+                            <li>Basic grammar and punctuation</li>
+                            <li>Making inferences and predictions</li>
+                        </ul>
+                        <span class="frequency">Weekly lessons + homework review</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">🔢</span>
+                        <span>Mathematics</span>
+                    </div>
+                    <div class="content-box">
+                        <h4>Focus Areas:</h4>
+                        <ul>
+                            <li>Multiplication and division mastery</li>
+                            <li>Introduction to fractions</li>
+                            <li>Place value and rounding</li>
+                            <li>Basic geometry: shapes, angles, symmetry</li>
+                            <li>Measurement and data interpretation</li>
+                        </ul>
+                        <span class="frequency">Weekly lessons + homework review</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">📝</span>
+                        <span>Homework Help</span>
+                    </div>
+                    <div class="content-box">
+                        <p>Review and complete all assigned homework from school. Ensure understanding of each concept. Provide additional practice as needed.</p>
+                        <span class="frequency">Every session</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">✅</span>
+                        <span>Assessments</span>
+                    </div>
+                    <div class="content-box">
+                        <h4>Assessment Plan:</h4>
+                        <ul>
+                            <li>Weekly skill checks (Math facts & Reading)</li>
+                            <li>Bi-weekly concept reviews</li>
+                            <li>Monthly progress assessments</li>
+                            <li>Writing assignments with constructive feedback</li>
+                        </ul>
+                        <span class="frequency">Ongoing progress tracking</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">🎯</span>
+                        <span>Study Skills & Organization</span>
+                    </div>
+                    <div class="content-box">
+                        <ul>
+                            <li>Developing good study habits</li>
+                            <li>Organization and responsibility</li>
+                            <li>Following directions carefully</li>
+                            <li>Building confidence and perseverance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
